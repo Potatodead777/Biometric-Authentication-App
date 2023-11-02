@@ -54,10 +54,8 @@ export const createUser = (req, res) => {
           new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, `Error occurred`)
         );
       } else {
-        // const user = { id: results.insertId, ...req.body, created_at: new Date() };
-        const user = results[0][0];
         res.status(httpStatus.CREATED.code).send(
-          new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, `User created`, { user })
+          new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, `User created`)
         );
       }
     });
@@ -98,5 +96,58 @@ export const deleteUser = (req, res) => {
     });
 }
 
+export const checkExists = (req, res) => {
+    logger.info(`${req.method} ${req.originalUrl}, comparing emails`)
+    var temp = Object.values(req.body);
+
+    // NODE CRASH IF INCORRECT EMAIL INPUTTED
+
+    var temp2 = temp[0] // email
+    var temp3 = temp[1] // password
+    database.query(QUERY.FIND_ID_WHERE_EMAIL, temp2, (error, results) => {
+        if (!error){
+            if (results[0].password === temp3){
+                res.status(httpStatus.OK.code)
+                .send(new Response(httpStatus.OK.code, httpStatus.OK.status, `Email and password correct`, results[0].uid))
+            } else{
+                res.status(httpStatus.OK.code)
+                .send(new Response(httpStatus.OK.code, httpStatus.OK.status, `password not correct`, results[0].password))
+            }
+            }else {
+                res.status(httpStatus.INTERNAL_SERVER_ERROR.code)
+                    .send(new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, `Error occured`))
+            }
+    });
+}
+
+export const retrievePasswords = (req, res) => {
+    logger.info(`${req.method} ${req.originalUrl}, retrieving passwords`)
+    database.query(QUERY.SELECT_PASS_WHERE_UID, Object.values(req.body)[0], (error, results) => {
+        if (!error){
+            res.status(httpStatus.OK.code)
+            .send(new Response(httpStatus.OK.code, httpStatus.OK.status, `Passwords retrieved`, results))
+            } else{
+                res.status(httpStatus.OK.code)
+                .send(new Response(httpStatus.OK.code, httpStatus.OK.status, `Error`, "0"))
+            }
+    });
+
+}
+
+export const addPassword = (req, res) => {
+    logger.info(`${req.method} ${req.originalUrl}, Adding Passwords`);
+    database.query(QUERY.ADD_PASS_WHERE_UID, Object.values(req.body), (error, results) => {
+      if (error) {
+        logger.error(error.message);
+        res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
+          new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, `Error occurred`)
+        );
+      } else {
+        res.status(httpStatus.CREATED.code).send(
+          new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, `Password Added`)
+        );
+      }
+    });
+  };
 
 export default httpStatus;

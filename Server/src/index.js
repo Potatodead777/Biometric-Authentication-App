@@ -18,7 +18,7 @@ const app = express();
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 
-app.use('/user', userRoutes);
+app.use('/api', userRoutes);
 
 app.get('/', (req, res) => res.send(new Response(httpStatus.OK.code, httpStatus.OK.status, 'User API, v1.0.0')));
 app.all('*' , (req, res) => res.status(httpStatus.NOT_FOUND.code).send(new Response(httpStatus.NOT_FOUND.code, httpStatus.NOT_FOUND.status, 'Route does not exist')))
