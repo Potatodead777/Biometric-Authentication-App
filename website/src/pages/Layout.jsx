@@ -1,5 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import '../App.css'
+import logo from '../images/logo.png'
 const Layout = () => {
   const navigate = useNavigate();
   const changePage = (page) => {
@@ -8,31 +9,30 @@ const Layout = () => {
 
   return (
     <>
-    <nav className="navBar">
-      <section onClick={() => changePage('/')}>
-        Logo
-      </section>
-      <section className="NavButtons">
-        <div onClick={() => changePage('passwords')}>
-          Passwords
-        </div>
-        <div onClick={() => changePage('profile')}>
-          Profile
-        </div>
-        <div onClick={() => changePage('about')}>
-          About
-        </div>
-      </section>
-      <section className="DarkModeProfile">
-        <div>
-          Dark
-        </div>
-        <div>
-          Sign Out/In
-        </div>
-      </section>
-      {/* remove and add link to div */}
-    </nav>
+      <nav className="navBar">
+        <section onClick={() => changePage('/')}>
+          <img src={logo} height={80} className="clickable nonselect"/>
+        </section>
+        <section className="NavButtons">
+          <div onClick={() => changePage('passwords')} className="clickable button">
+            Passwords
+          </div>
+          <div onClick={() => changePage('profile')} className="clickable button">
+            Profile
+          </div>
+          <div onClick={() => changePage('about')} className="clickable button">
+            About
+          </div>
+        </section>
+        <section className="DarkModeProfile">
+          <div className="dark-mode-button clickable material-symbols-outlined">
+            dark_mode
+          </div>
+          <div onClick={() => changePage('signin')} className="clickable sign-in-button">
+            Sign Out/In
+          </div>
+        </section>
+      </nav>
       <Outlet />
     </>
   )

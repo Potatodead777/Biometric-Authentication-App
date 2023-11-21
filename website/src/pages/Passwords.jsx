@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-
+import Addpass from '../components/Addpass';
+import PasswordBox from '../components/PasswordBox';
 function Passwords() {
   const [cookies] = useCookies(['uid']);
   const [passwords, setPasswords] = useState([]);
@@ -64,31 +65,27 @@ function Passwords() {
 
   return (
     <div>
-      {passwords.length > 0 ? (
-        <div>
-          {passwords.map((item, index) => (
-            <div key={index}>{item.website}</div>
-          ))}
-        </div>
-      ) : (
-        <div>Loading...</div>
-      )}
-      <div>
-      <form onSubmit={(event) => addPasswordFunction(event)}>
-          <input 
-          placeholder='Website' 
-          id='addWebsite'
-          onChange={(e) => setaddWeb(e.target.value)}
-          />
-          <input 
-              placeholder='Password' 
-              id='addPassword'
-              onChange={(e) => setaddPass(e.target.value)}
-          />
-          <button type="submit">Sign In</button>
-      </form>
-        <button>Add Password</button>
-      </div>
+      <section className='Password-Main-Add-Section'>
+        <Addpass></Addpass>
+      </section>
+      <section className='Password-Section'>
+      <section className='Password-Options-Section'>
+        this section will contain options for the passwords
+      </section>
+        <section className='Password-Main-Section'>
+          <section className='Password-Main-Inner'>
+            {passwords.length > 0 ? (
+              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                {passwords.map((item, index) => (
+                  <PasswordBox text={item} index={index} />
+                ))}
+              </div>
+            ) : (
+              <div>Loading...</div>
+            )}
+          </section>
+        </section>
+      </section>
     </div>
   );
 }

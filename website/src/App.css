@@ -1,26 +1,201 @@
 html,
-body{
+body {
     margin: 0px;
 }
 
-.navBar{
+*{
+    font-family: 'DM Sans', sans-serif;
+}
+
+.navBar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0px 2% 0px 2%;
+    padding: 0px 2% 0px 1%;
+    background-color: #dc2626;
+    box-shadow: 0 1px 2px rgb(31, 31, 31),0 0px 2px white;
+    position: relative;
+    z-index: 10;
 
 }
 
-.NavButtons{
+.NavButtons {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    height: 80px;
-    width: 30%;
-    background-color: lightgrey;
+    height: 90px;
 }
 
-.DarkModeProfile{
+
+.button{
+    height: calc(100% - 5px);
+    width: 150px;
     display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border-top: 5px #dc2626 solid;
+    transition: 300ms;
+
+}
+
+.button:hover{
+    border-top: 5px black solid;
+    background-color: #b91c1c;
+}
+
+.DarkModeProfile {
+    display: flex;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.footer {
+    background: linear-gradient(rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, 0) 10%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #9ca3af;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.Password-Section {
+    display: flex;
+}
+
+.Password-Options-Section {
+    width: 20%;
+    height: calc(100vh - 80px - 90px);
+    background-color: #f87171;
+    border-right: 1px black solid;
+    
+}
+
+.Password-Main-Section {
+    height: auto;
+    width: 80%;
+}
+
+.Password-Main-Add-Section {
+    width: auto;
+    background-color: #cbd5e1;
+    height: 50px;
+    justify-content: center;
+    display: flex;
+    box-shadow: 0 1px 2px rgb(31, 31, 31);
+    position: relative;
+    z-index: 1;
+
+}
+
+.Password-Main-Inner {
+    padding: 15px 2rem;
+    height: calc(100% - 80px - 2rem);
+    background-color: white;
+    
+
+}
+
+.PasswordBox {
+    background-color: #f5f5f4;
+    width: calc(33.33% - 20px);
+    border-radius: 2rem;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.PasswordBox:hover {
+    background-color: #d4d4d4;
+}
+
+.Password-Request-Button-Div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.Password-Request-Button {
+    border: none;
+    background-color: #dc2626;
+    margin-top: 30px;
+    height: 50px;
+    width: 30%;
+    font-size: x-large;
+    border-radius: 1rem;
+    margin-bottom: 20px;
+    color: white;
+    font-family: 'Lato', sans-serif;
+
+}
+
+.Password-Request-Button:hover {
+    background-color: #b91c1c;
+}
+
+.Password-Request-Button:active{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+}
+
+.nonselect{
+    user-select: none;
+}
+
+.Password-Website {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 3rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.AddNewPasswordButton {
+    background-color: transparent;
+    border: none;
+    font-size: 40px;
+    color: white;
+    font-family: 'Lato', sans-serif;
+
+
+}
+
+.AddNewPasswordButton:hover {
+    background-color: orchid;
+}
+
+.pop-up-add-password{
+    height: 750px;
+    width: 750px;
+    background-color: aqua;
+    border-radius: 1.5rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.pop-up-background{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100vw;
+    height: 100vh;
+}
+
+.dark-mode-button{
+    border-radius: 50%;
+    padding: 3px;
+    font-size: 2rem;
+    background-color: #b91c1c;
+}
+
+.sign-in-button{
+    
 }

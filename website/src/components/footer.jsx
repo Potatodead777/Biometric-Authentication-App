@@ -1,8 +1,15 @@
 import React from 'react'
-
+import '../App.css'
 function footer() {
   return (
-    <div>Footer</div>
+    <div className='footer'>
+      <span>
+        © 2023
+      </span>
+      <span>
+        BioPass. All rights reserved.
+      </span>
+    </div>
   )
 }
 
