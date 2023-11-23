@@ -81,7 +81,9 @@ function Passwords() {
                 ))}
               </div>
             ) : (
-              <div>Loading...</div>
+              <div className='test2'>
+                <div className='loader'></div>
+              </div>
             )}
           </section>
         </section>

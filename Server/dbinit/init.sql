@@ -20,6 +20,7 @@ CREATE TABLE passwords(
     uid         VARCHAR(255) NOT NULL,
     website     VARCHAR(255) NOT NULL,
     password    VARCHAR(255) NOT NULL,
+    extraInfo   VARCHAR(512),
     created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     PRIMARY KEY (id),

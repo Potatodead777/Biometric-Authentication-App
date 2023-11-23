@@ -3,7 +3,7 @@ body {
     margin: 0px;
 }
 
-*{
+* {
     font-family: 'DM Sans', sans-serif;
 }
 
@@ -13,7 +13,7 @@ body {
     justify-content: space-between;
     padding: 0px 2% 0px 1%;
     background-color: #dc2626;
-    box-shadow: 0 1px 2px rgb(31, 31, 31),0 0px 2px white;
+    box-shadow: 0 1px 2px rgb(31, 31, 31), 0 0px 2px white;
     position: relative;
     z-index: 10;
 
@@ -28,7 +28,7 @@ body {
 }
 
 
-.button{
+.button {
     height: calc(100% - 5px);
     width: 150px;
     display: flex;
@@ -41,7 +41,7 @@ body {
 
 }
 
-.button:hover{
+.button:hover {
     border-top: 5px black solid;
     background-color: #b91c1c;
 }
@@ -50,23 +50,20 @@ body {
     display: flex;
 }
 
-.clickable{
+.clickable {
     cursor: pointer;
 }
 
 .footer {
     background: linear-gradient(rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, 0) 10%);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+
     background-color: #9ca3af;
     align-items: center;
     gap: 0.2rem;
     padding: 2rem;
     display: flex;
     justify-content: center;
-    
+
 }
 
 .Password-Section {
@@ -75,10 +72,10 @@ body {
 
 .Password-Options-Section {
     width: 20%;
-    height: calc(100vh - 80px - 90px);
+    height: calc(100vh - 80px - 60px);
     background-color: #f87171;
     border-right: 1px black solid;
-    
+
 }
 
 .Password-Main-Section {
@@ -100,9 +97,10 @@ body {
 
 .Password-Main-Inner {
     padding: 15px 2rem;
-    height: calc(100% - 80px - 2rem);
-    background-color: white;
-    
+    height: calc(100vh - 80px - 90px);
+    background-color: #f1f5f9;
+    white-space: nowrap;
+    overflow-y: auto;
 
 }
 
@@ -115,7 +113,7 @@ body {
 }
 
 .PasswordBox:hover {
-    background-color: #d4d4d4;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 .Password-Request-Button-Div {
@@ -127,14 +125,15 @@ body {
 .Password-Request-Button {
     border: none;
     background-color: #dc2626;
-    margin-top: 30px;
-    height: 50px;
-    width: 30%;
+    margin-top: 50px;
+    height: 60px;
+    width: 35%;
     font-size: x-large;
     border-radius: 1rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color: white;
     font-family: 'Lato', sans-serif;
+    font-size: 2rem;
 
 }
 
@@ -142,18 +141,18 @@ body {
     background-color: #b91c1c;
 }
 
-.Password-Request-Button:active{
+.Password-Request-Button:active {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
 }
 
-.nonselect{
+.nonselect {
     user-select: none;
 }
 
 .Password-Website {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 60px;
     font-size: 3rem;
     font-family: 'Lato', sans-serif;
 }
@@ -172,30 +171,152 @@ body {
     background-color: orchid;
 }
 
-.pop-up-add-password{
-    height: 750px;
+.pop-up-add-password {
     width: 750px;
-    background-color: aqua;
+    background-color: white;
     border-radius: 1.5rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    padding: 15px;
 }
 
-.pop-up-background{
+.add-password-form {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.pop-up-background {
     justify-content: center;
     display: flex;
-    align-items: center;
     background-color: rgba(0, 0, 0, 0.3);
     width: 100vw;
     height: 100vh;
 }
 
-.dark-mode-button{
+.dark-mode-button {
     border-radius: 50%;
     padding: 3px;
     font-size: 2rem;
     background-color: #b91c1c;
 }
 
-.sign-in-button{
-    
+.sign-in-button {}
+
+.new-password-title {
+    justify-content: center;
+    display: flex;
+    font-size: 4rem;
 }
+
+.extraInfo {
+    resize: none;
+    font-size: 1.2rem;
+
+}
+
+form {
+    width: 85%;
+}
+
+form label {
+    font-size: 1.8rem;
+}
+
+form input {
+    width: calc(100% - 10px);
+    height: 40px;
+    padding-left: 10px;
+    font-size: 1.4rem;
+    border-radius: 0.5rem;
+    border: solid 1px black;
+    margin-bottom: 10px;
+}
+
+form textarea {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.hide {
+    position: relative;
+    float: right;
+    margin-left: -40px;
+    margin-top: 10px;
+    z-index: 2;
+}
+
+.addPasswordBox {
+    width: 45%;
+    font-size: 2rem;
+    height: 4rem;
+    border: none;
+    border-radius: 1rem;
+    margin-bottom: 10px;
+    background-color: #dc2626;
+    color: white
+}
+
+.addPasswordBox:hover {
+    background-color: #b91c1c;
+}
+
+.display-text {
+    width: 80%;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    border: 1px black solid;
+    padding: 10px 0px 10px 0px;
+    position: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.test {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.display-text-area {
+    width: calc(80% - 10px);
+    min-height: 250px;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    border: 1px black solid;
+    padding: 5px 5px 0px 5px;
+    position: flex;
+}
+label{
+    font-size: 1.8rem;
+
+}
+
+.test2{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: calc(100vh - 80px - 90px);
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #dc2626; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
