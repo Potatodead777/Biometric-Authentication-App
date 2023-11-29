@@ -11,7 +11,7 @@ import httpStatus from "./controller/user.controller.js";
 // Import .env config files for database
 dotenv.config();
 
-// Set the port from the .env else set to 3000
+// Set the port from the .env else set to 5000
 const PORT = process.env.SERVER_PORT || 5000;
 const app = express();
 
