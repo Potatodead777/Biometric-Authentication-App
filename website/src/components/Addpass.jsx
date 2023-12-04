@@ -11,7 +11,8 @@ function Addpass() {
   const [addVis, setAddVis] = useState('visibility');
   const [type, setType] = useState('password');
   const [cookies] = useCookies(['uid']);
-  const addPasswordFunction = () => {
+  const addPasswordFunction = (event) => {
+    event.preventDefault()
     const data = {
       uid: cookies.uid,
       website: addWeb,
@@ -19,7 +20,7 @@ function Addpass() {
       info: info
     }
 
-    fetch('http://localhost/api/password', {
+    fetch('http://13.48.147.244/api/password', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

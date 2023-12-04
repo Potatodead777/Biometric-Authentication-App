@@ -51,7 +51,7 @@ export const createUser = (req, res) => {
       if (error) {
         logger.error(error.message);
         res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
-          new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, `Error occurred`)
+          new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, error.message)
         );
       } else {
         res.status(httpStatus.CREATED.code).send(
@@ -76,7 +76,7 @@ export const updateUser = (req, res) => {
                 } else {
                     logger.error(error.message);
                     res.status(httpStatus.INTERNAL_SERVER_ERROR.code)
-                        .send(new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, `Error occured`))
+                        .send(new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, error.message))
                 }
             });
         }
@@ -115,7 +115,7 @@ export const checkExists = (req, res) => {
             }
             }else {
                 res.status(httpStatus.INTERNAL_SERVER_ERROR.code)
-                    .send(new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, `Error occured`))
+                    .send(new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, error.message))
             }
     });
 }
@@ -140,7 +140,7 @@ export const addPassword = (req, res) => {
       if (error) {
         logger.error(error.message);
         res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
-          new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, `Error occurred`)
+          new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, error.message)
         );
       } else {
         res.status(httpStatus.CREATED.code).send(
@@ -156,7 +156,7 @@ export const addRequest = (req, res) => {
         if (error) {
           logger.error(error.message);
           res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
-            new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, `Error occurred`)
+            new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, error.message)
           );
         } else {
           res.status(httpStatus.CREATED.code).send(
@@ -164,6 +164,22 @@ export const addRequest = (req, res) => {
           );
         }
       });
+}
+
+export const getRequests = (req, res) => {
+  logger.info(`${req.method} ${req.originalUrl}, Getting Requests`);
+  database.query(QUERY.SELECT_ALL_FROM_REQUESTS, (error, results) => {
+      if (error) {
+        logger.error(error.message);
+        res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
+          new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, error.message)
+        );
+      } else {
+        res.status(httpStatus.CREATED.code).send(
+          new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, results)
+        );
+      }
+    });
 }
 
 export default httpStatus;

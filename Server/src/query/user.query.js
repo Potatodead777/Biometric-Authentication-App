@@ -9,7 +9,8 @@ const QUERY = {
     FIND_ID_WHERE_EMAIL: 'SELECT * FROM users WHERE email = ?',
     SELECT_PASS_WHERE_UID: 'SELECT * FROM passwords WHERE uid = ?',
     ADD_PASS_WHERE_UID: 'INSERT INTO passwords(uid, website, password, extraInfo) VALUES (?,?,?,?)',
-    ADD_RES_FROM_ID: 'INSERT INTO requests(uid, passwordID, websiteName, accepted) VALUES (?,?,?,?)'
+    ADD_RES_FROM_ID: 'INSERT INTO requests(uid, passwordID, websiteName, accepted) VALUES (?,?,?,?)',
+    SELECT_ALL_FROM_REQUESTS: 'SELECT * FROM requests'
 };
 
 export default QUERY;
