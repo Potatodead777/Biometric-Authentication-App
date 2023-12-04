@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Popup from 'reactjs-popup';
+import { useCookies } from 'react-cookie';
+
 function PasswordBox({ text }) {
   const [website, setWebsite] = useState('')
+  const [cookies] = useCookies(['uid']);
 
 
   useEffect(() => {
@@ -14,6 +17,32 @@ function PasswordBox({ text }) {
 
     remove();
   }, [])
+
+  const requestPassword = () => {
+    console.log('Test')
+    const data = {
+      uid: cookies.uid,
+      passwordID: text.id,
+      websiteName: text.website,
+      accepted: 'u'
+    }
+
+    fetch('http://localhost/api/requests', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+          .then(response => response.json())
+          .then(responseData => {
+            // Handle the response data
+            console.log(responseData);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      };
 
 
   return (
@@ -48,7 +77,7 @@ function PasswordBox({ text }) {
 
                 </div>
                 <div className='password-view-buttons'>
-                  <button>
+                  <button onClick={() => requestPassword()}>
                     Request Password
                   </button>
                   <button>

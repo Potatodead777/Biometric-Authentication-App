@@ -150,4 +150,20 @@ export const addPassword = (req, res) => {
     });
   };
 
+export const addRequest = (req, res) => {
+    logger.info(`${req.method} ${req.originalUrl}, Adding Request`);
+    database.query(QUERY.ADD_RES_FROM_ID, Object.values(req.body), (error, results) => {
+        if (error) {
+          logger.error(error.message);
+          res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
+            new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, `Error occurred`)
+          );
+        } else {
+          res.status(httpStatus.CREATED.code).send(
+            new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, `Password Requested`)
+          );
+        }
+      });
+}
+
 export default httpStatus;

@@ -19,7 +19,7 @@ function Addpass() {
       info: info
     }
 
-    fetch('http://localhost:5000/api/password', {
+    fetch('http://localhost/api/password', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

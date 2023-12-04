@@ -27,6 +27,20 @@ CREATE TABLE passwords(
     FOREIGN KEY (uid) REFERENCES users(uid)
 );
 
+CREATE TABLE requests(
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    uid         VARCHAR(255) NOT NULL,
+    passwordID  BIGINT UNSIGNED NOT NULL,
+    websiteName VARCHAR(255) NOT NULL,
+    created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    accepted CHAR,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (uid) REFERENCES users(uid),
+    FOREIGN KEY (passwordID) REFERENCES passwords(id)
+
+);
+
 INSERT INTO users (email, password, uid)
 VALUES ('test@example.com', 'testpassword', UUID()),
 ('test2@example.com', 'testpassword2', UUID()),
