@@ -184,7 +184,7 @@ export const getRequests = (req, res) => {
 
 export const getRequestsByUID = (req, res) => {
   logger.info(`${req.method} ${req.originalUrl}, Getting Requests By UID`);
-  database.query(QUERY.SELECT_REQUESTS_FROM_UID, (error, results) => {
+  database.query(QUERY.SELECT_REQUESTS_FROM_UID, Object.values(req.body), (error, results) => {
     if (error) {
       logger.error(error.message);
       res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
