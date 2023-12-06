@@ -182,4 +182,20 @@ export const getRequests = (req, res) => {
     });
 }
 
+export const getRequestsByUID = (req, res) => {
+  logger.info(`${req.method} ${req.originalUrl}, Getting Requests By UID`);
+  database.query(QUERY.SELECT_REQUESTS_FROM_UID, (error, results) => {
+    if (error) {
+      logger.error(error.message);
+      res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
+        new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, error.message)
+      );
+    } else {
+      res.status(httpStatus.CREATED.code).send(
+        new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, results)
+      );
+    }
+  });
+}
+
 export default httpStatus;

@@ -7,7 +7,7 @@ function Addpass() {
   const [addWeb, setaddWeb] = useState();
   const [addWebName, setaddWebName] = useState();
   const [addPass, setaddPass] = useState();
-  const [info, setInfo] = useState();
+  const [info, setInfo] = useState('');
   const [addVis, setAddVis] = useState('visibility');
   const [type, setType] = useState('password');
   const [cookies] = useCookies(['uid']);
