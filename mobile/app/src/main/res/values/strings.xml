@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string-array name="requests_temp">
+        <item>Google.com</item>
+        <item>Amazon.com</item>
+        <item>Twitter.com</item>
+        <item>Gmail.com</item>
+        <item>Facebook.com</item>
+    </string-array>
+</resources>
