@@ -320,3 +320,30 @@ label{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+.waiting-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    width: 50vw;
+    height: 350px;
+}
+
+.loader-request{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #dc2626; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+}

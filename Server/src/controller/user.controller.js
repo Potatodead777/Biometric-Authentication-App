@@ -160,7 +160,7 @@ export const addRequest = (req, res) => {
           );
         } else {
           res.status(httpStatus.CREATED.code).send(
-            new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, `Password Requested`)
+            new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, results)
           );
         }
       });
@@ -193,6 +193,22 @@ export const getRequestsByUID = (req, res) => {
     } else {
       res.status(httpStatus.CREATED.code).send(
         new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, results)
+      );
+    }
+  });
+}
+
+export const checkRequest = (req, res) => {
+  logger.info(`${req.method} ${req.originalUrl}, Checking if request is accepted`);
+  database.query(QUERY.CHECK_REQUEST_IS_ACCEPTED, Object.values(req.body), (error, results) => {
+    if (error) {
+      logger.error(error.message);
+      res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
+        new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, error.message)
+      );
+    } else {
+      res.status(httpStatus.CREATED.code).send(
+        new Response(httpStatus.CREATED.code, httpStatus.OK.status, results)
       );
     }
   });

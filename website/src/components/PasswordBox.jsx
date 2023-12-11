@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Popup from 'reactjs-popup';
 import { useCookies } from 'react-cookie';
+import WaitForRequest from './WaitForRequest';
 
 function PasswordBox({ text }) {
   const [website, setWebsite] = useState('')
   const [cookies] = useCookies(['uid']);
-
-
+  const [showPassword, setShowPassword] = useState(false)
+  const [waitFor, setWaitfor] = useState(false);
   useEffect(() => {
     const remove = () => {
       const modifiedString = text.website.replace(/(www\.|\.co\.uk|\.com)/g, '');
@@ -19,6 +20,7 @@ function PasswordBox({ text }) {
   }, [])
 
   const requestPassword = () => {
+    setWaitfor(true)
     console.log('Test')
     const data = {
       uid: cookies.uid,
@@ -27,7 +29,7 @@ function PasswordBox({ text }) {
       accepted: 'u'
     }
 
-    fetch('http://13.48.147.244/api/requests', {
+    fetch('http://localhost/api/requests', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -91,6 +93,7 @@ function PasswordBox({ text }) {
             </div>
           </div>
         </Popup>
+        <WaitForRequest setShowPassword={setShowPassword} showPassword={showPassword} setWaitfor={setWaitfor} waitFor={waitFor} uid={cookies.uid} text={text.id}></WaitForRequest>
       </section>
 
     </div>

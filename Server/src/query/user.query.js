@@ -11,7 +11,8 @@ const QUERY = {
     ADD_PASS_WHERE_UID: 'INSERT INTO passwords(uid, website, password, extraInfo) VALUES (?,?,?,?)',
     ADD_RES_FROM_ID: 'INSERT INTO requests(uid, passwordID, websiteName, accepted) VALUES (?,?,?,?)',
     SELECT_ALL_FROM_REQUESTS: 'SELECT * FROM requests',
-    SELECT_REQUESTS_FROM_UID: 'SELECT * FROM requests WHERE uid = ?'
+    SELECT_REQUESTS_FROM_UID: 'SELECT * FROM requests WHERE uid = ?',
+    CHECK_REQUEST_IS_ACCEPTED: 'SELECT * FROM requests WHERE uid = ? AND passwordID = ?'
 };
 
 export default QUERY;
