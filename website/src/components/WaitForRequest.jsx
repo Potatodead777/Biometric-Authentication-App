@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Popup from 'reactjs-popup'
 
-function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitFor, uid, text}) {
+function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitfor, uid, text}) {
   const [test, setTest] = useState('test1')
   useEffect(() => {
     setTest('test2')
@@ -36,15 +36,35 @@ function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitFor, uid
 
   const test3 = (temp) => {
     var test2 = temp.message[0].accepted;
-    if(test2 === 'u'){
+    if(test2 === 'y'){
+      setShowPassword(true)
+      setWaitfor(false)
       console.log("test is U")
+    }else if (test2 === 'n'){
+      setShowPassword(false)
+      setWaitfor(false)
+      removeItem(temp.message[0].id)
     }else{
-      console.log("test is not U")
+
     }
     console.log("tes2   t",  temp)
     console.log(temp.message[0].accepted)
   }
 
+  const removeItem = (id) => {
+    fetch(`http://13.48.147.244/api/check/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then(responseData => {
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      }); 
+  }
   return (
     <div>
         <Popup modal open={waitFor} nested>

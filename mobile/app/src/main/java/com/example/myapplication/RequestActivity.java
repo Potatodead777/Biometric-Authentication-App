@@ -68,7 +68,7 @@ public class RequestActivity extends AppCompatActivity {
     }
 
     public void sendRequest(String s){
-        String url = "http://13.48.147.244/api/signin"; //not real one
+        String url = "http://13.48.147.244/api/change"; //not real one
         Bundle extras = getIntent().getExtras();
         JSONObject requestBody = new JSONObject();
         if (extras != null) {

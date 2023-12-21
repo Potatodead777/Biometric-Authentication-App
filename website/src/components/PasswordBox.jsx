@@ -53,7 +53,7 @@ function PasswordBox({ text }) {
         {website}
       </section>
       <section className='Password-Request-Button-Div'>
-        <Popup trigger={<button className='Password-Request-Button clickable'> View </button>} modal>
+        <Popup trigger={<button className='Password-Request-Button clickable'> View </button>} modal nested>
           <div>
             <div className='pop-up-add-password'>
               <section className='new-password-title'>
@@ -67,7 +67,7 @@ function PasswordBox({ text }) {
                 <br />
                 <label>Website Password</label>
                 <div className='display-text'>
-                  {text.password}
+                  {showPassword === false ? ('************') : (text.password)}
                 </div>
                 <label>Extra Information</label>
                 <div className='display-text-area'>

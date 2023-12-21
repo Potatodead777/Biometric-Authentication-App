@@ -13,7 +13,9 @@ const QUERY = {
     SELECT_ALL_FROM_REQUESTS: 'SELECT * FROM requests',
     SELECT_REQUESTS_FROM_UID: 'SELECT * FROM requests WHERE uid = ?',
     CHECK_REQUEST_IS_ACCEPTED: 'SELECT * FROM requests WHERE uid = ? AND passwordID = ?',
-    CHANGE_REQUEST_ACCPETED: 'UPDATE requests SET accepted = ? WHERE id = ?'
+    CHANGE_REQUEST_ACCPETED: 'UPDATE requests SET accepted = ? WHERE id = ?',
+    DELETE_REQUEST: 'DELETE FROM requests WHERE id = ?;',
+
 };
 
 export default QUERY;
