@@ -14,7 +14,7 @@ function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitFor, uid
     }
     console.log(data)
 
-    fetch('http://localhost/api/check', {
+    fetch('http://13.48.147.244/api/check', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +35,14 @@ function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitFor, uid
   }
 
   const test3 = (temp) => {
+    var test2 = temp.message[0].accepted;
+    if(test2 === 'u'){
+      console.log("test is U")
+    }else{
+      console.log("test is not U")
+    }
     console.log("tes2   t",  temp)
+    console.log(temp.message[0].accepted)
   }
 
   return (

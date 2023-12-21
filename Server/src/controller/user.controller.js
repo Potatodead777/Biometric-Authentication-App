@@ -214,4 +214,20 @@ export const checkRequest = (req, res) => {
   });
 }
 
+export const changeRequest = (req, res) => {
+  logger.info(`${req.method} ${req.originalUrl}, Changing Request`);
+  database.query(QUERY.CHANGE_REQUEST_ACCPETED, Object.values(req.body), (error, results) => {
+    if (error) {
+      logger.error(error.message);
+      res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
+        new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, error.message)
+      );
+    } else {
+      res.status(httpStatus.CREATED.code).send(
+        new Response(httpStatus.CREATED.code, httpStatus.OK.status, 'Changed Accepted Value')
+      );
+    }
+  });
+}
+
 export default httpStatus;
