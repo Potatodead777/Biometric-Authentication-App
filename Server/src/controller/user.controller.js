@@ -150,34 +150,36 @@ export const addPassword = (req, res) => {
     });
   };
 
-export const addRequest = (req, res) => {
+  export const addRequest = (req, res) => {
     logger.info(`${req.method} ${req.originalUrl}, Adding Request`);
+    
+    // Insert the new request
     database.query(QUERY.ADD_RES_FROM_ID, Object.values(req.body), (error, results) => {
-        if (error) {
-          logger.error(error.message);
-          res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
-            new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, error.message)
-          );
-        } else {
-          res.status(httpStatus.CREATED.code).send(
-            new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, results)
-          );
-        }
-      });           
-      database.query(QUERY.DELETE_OLD_REQUESTS, Object.values(req.body), (error, results) => {
-        if (error) {
-          logger.error(error.message);
-          res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
-            new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, error.message)
-          );
-        } else {
-          res.status(httpStatus.CREATED.code).send(
-            new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, results)
-            
-          );
-        }
-      });
-}
+      if (error) {
+        logger.error(error.message);
+        res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
+          new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, error.message)
+        );
+      } else {
+        // On successful insertion, delete old requests
+        logger.info('Request added successfully');
+        database.query(QUERY.DELETE_OLD_REQUESTS, Object.values(req.body), (deleteError, deleteResults) => {
+          if (deleteError) {
+            logger.error(deleteError.message);
+            res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
+              new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, deleteError.message)
+            );
+          } else {
+            logger.info('Old requests deleted successfully');
+            res.status(httpStatus.CREATED.code).send(
+              new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, results)
+            );
+          }
+        });
+      }
+    });
+  };
+  
 
 export const getRequests = (req, res) => {
   logger.info(`${req.method} ${req.originalUrl}, Getting Requests`);
