@@ -14,6 +14,7 @@ dotenv.config();
 // Set the port from the .env else set to 5000
 const PORT = process.env.SERVER_PORT || 5000;
 const app = express();
+const axios = require('axios');
 
 app.use(cors({ origin: '*' }));
 app.use(express.json());
@@ -25,3 +26,17 @@ app.all('*' , (req, res) => res.status(httpStatus.NOT_FOUND.code).send(new Respo
 
 
 app.listen(PORT, ()=> logger.info(`Server running on: ${ip.address()}:${PORT}`))
+
+const makeRequest = () => {
+    // Replace 'your_url_here' with the URL you want to request
+    axios.delete('http://13.48.147.244/api/requests/')
+      .then(response => {
+        console.log('Request successful:', response.data);
+      })
+      .catch(error => {
+        console.error('Error making the request:', error.message);
+      });
+  };
+  
+  // Call the function immediately and then every minute (60,000 milliseconds)
+  setInterval(makeRequest, 60000); // 60000 milliseconds = 1 minute

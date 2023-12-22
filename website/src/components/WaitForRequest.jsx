@@ -39,27 +39,32 @@ function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitfor, uid
     if(test2 === 'y'){
       setShowPassword(true)
       setWaitfor(false)
+      removeItem(temp.message[0].id)
       console.log("test is U")
     }else if (test2 === 'n'){
       setShowPassword(false)
       setWaitfor(false)
       removeItem(temp.message[0].id)
     }else{
-
     }
     console.log("tes2   t",  temp)
     console.log(temp.message[0].accepted)
   }
 
   const removeItem = (id) => {
-    fetch(`http://13.48.147.244/api/check/${id}`, {
-      method: 'PUT',
+    const data = {
+      id: id
+    }
+    fetch(`http://13.48.147.244/api/requests/uid`, {
+      method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify(data),
     })
       .then(response => response.json())
       .then(responseData => {
+        console.log(responseData)
       })
       .catch(error => {
         console.error('Error:', error);
