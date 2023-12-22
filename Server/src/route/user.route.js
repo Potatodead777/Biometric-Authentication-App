@@ -6,7 +6,7 @@ Create the API in .controller.js and add it here
 
 */
 import express from 'express';
-import { getUsers, getUser, createUser, deleteUser, updateUser, checkExists, retrievePasswords, addPassword, addRequest, getRequests, getRequestsByUID, checkRequest, changeRequest, deleteRequest, deleteAllRequests } from "../controller/user.controller.js";
+import { getUsers, getUser, createUser, deleteUser, updateUser, checkExists, retrievePasswords, addPassword, addRequest, getRequests, getRequestsByUID, checkRequest, changeRequest, deleteRequest } from "../controller/user.controller.js";
 
 const userRoutes = express.Router();
 
