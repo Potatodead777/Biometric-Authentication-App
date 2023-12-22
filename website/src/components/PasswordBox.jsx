@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import Popup from 'reactjs-popup';
 import { useCookies } from 'react-cookie';
 import WaitForRequest from './WaitForRequest';
+import DeletePassword from './DeletePassword';
 
 function PasswordBox({ text }) {
   const [website, setWebsite] = useState('')
   const [cookies] = useCookies(['uid']);
   const [showPassword, setShowPassword] = useState(false)
+  const [showDelete, setShowDelete] = useState(false)
   const [waitFor, setWaitfor] = useState(false);
   useEffect(() => {
     const remove = () => {
@@ -79,13 +81,13 @@ function PasswordBox({ text }) {
 
                 </div>
                 <div className='password-view-buttons'>
-                  <button onClick={() => requestPassword()}>
+                  <button onClick={() => requestPassword()} className='requestButtons'>
                     Request Password
                   </button>
-                  <button>
+                  <button className='requestButtons'>
                     Edit Password
                   </button>
-                  <button>
+                  <button className='requestButtons' onClick={() => setShowDelete(true)}>
                     Delete Password
                   </button>
                 </div>
@@ -94,6 +96,7 @@ function PasswordBox({ text }) {
           </div>
         </Popup>
         <WaitForRequest setShowPassword={setShowPassword} showPassword={showPassword} setWaitfor={setWaitfor} waitFor={waitFor} uid={cookies.uid} text={text.id}></WaitForRequest>
+        <DeletePassword showDelete={showDelete} text={text.id} setShowDelete={setShowDelete}/>
       </section>
 
     </div>

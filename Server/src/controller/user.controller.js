@@ -175,6 +175,11 @@ export const addPassword = (req, res) => {
               new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, results)
             );
           }
+          //CREATE EVENT delete_old_requests
+          //ON SCHEDULE
+          //EVERY 1 MINUTE
+          //DO
+          // FROM requests WHERE created_at < (NOW() - INTERVAL 3 MINUTE);
         });
       }
     });
@@ -256,6 +261,22 @@ export const deleteRequest = (req, res) => {
     } else {
       res.status(httpStatus.CREATED.code).send(
         new Response(httpStatus.CREATED.code, httpStatus.OK.status, 'Deleted request')
+      );
+    }
+  });
+}
+
+export const deletePasswords = (req, res) => {
+  logger.info(`${req.method} ${req.originalUrl}, deleting Passwords`);
+  database.query(QUERY.DELETE_PASSWORD_WHERE_ID, Object.values(req.body), (error, results) => {
+    if (error) {
+      logger.error(error.message);
+      res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
+        new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, error.message)
+      );
+    } else {
+      res.status(httpStatus.CREATED.code).send(
+        new Response(httpStatus.CREATED.code, httpStatus.OK.status, 'Deleted Passwords')
       );
     }
   });

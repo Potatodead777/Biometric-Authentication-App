@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.os.Bundle;
 import com.android.volley.Request;
@@ -36,16 +38,24 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences2 = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String storedUid = sharedPreferences2.getString("UID", "");
         ArrayList<String> websiteNamesList = new ArrayList<>();
-
+        Button button3 = findViewById(R.id.button3);
         JSONObject requestBody2 = new JSONObject();
         try {
             requestBody2.put("uid", storedUid);
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+            }
+        });
         TextView data = findViewById(R.id.data);
         url = "http://13.48.147.244/api/requests/uid";
-
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, requestBody2, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

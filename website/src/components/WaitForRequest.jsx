@@ -3,6 +3,31 @@ import Popup from 'reactjs-popup'
 
 function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitfor, uid, text}) {
   const [test, setTest] = useState('test1')
+  const [shouldCallFunction, setShouldCallFunction] = useState(false);
+
+  useEffect(() => {
+    let intervalId;
+
+    if (waitFor === true) {
+      intervalId = setInterval(() => {
+        // Call your function here
+        yourFunction();
+      }, 2000); // Interval of 2 seconds (2000 milliseconds)
+    }
+
+    return () => {
+      // Clean up the interval when the component unmounts or when shouldCallFunction becomes false
+      clearInterval(intervalId);
+    };
+  }, [waitFor]);
+
+  // Your function to be called every 2 seconds if shouldCallFunction is true
+  const yourFunction = () => {
+    // Your logic here
+    checkRequest();
+    };
+
+
   useEffect(() => {
     setTest('test2')
   }, [waitFor]);

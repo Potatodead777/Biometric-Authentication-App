@@ -347,3 +347,35 @@ label{
     height: 120px;
     animation: spin 1s linear infinite;
 }
+
+.requestButtons{
+    width: 30%;
+    height: 75px;
+    border: none;
+    background-color:#dc2626;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.requestButtons:hover{
+    background-color:#b91c1c;
+}
+
+.requestButtonsFalse{
+    width: 30%;
+    height: 80px;
+    border: none;
+    background-color: lightgray;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+}
+
+.password-view-buttons{
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+}
