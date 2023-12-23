@@ -6,10 +6,9 @@ function DeletePassword({showDelete, text, setShowDelete}) {
     const DeletePassword = () => {
         const data = {
           id: text
-
         }
 
-        fetch('http://13.48.147.244/api/check', {
+        fetch('http://13.48.147.244/api/password', {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json',
@@ -27,15 +26,15 @@ function DeletePassword({showDelete, text, setShowDelete}) {
 
   return (
         <Popup modal open={showDelete} nested>
-        <div className='waiting-div'>
-            <div>
+        <div className='delete-div'>
+            <div className='Delete-Website'>
                 Are you sure you want to delete this password?
             </div>
-            <div>
-                <button onClick={() => DeletePassword()}>
+            <div className='password-view-buttons'>
+                <button onClick={() => DeletePassword()} className='requestButtons'>
                     Yes
                 </button>
-                <button>
+                <button className='requestButtons' onClick={() => setShowDelete(false)}>
                     No
                 </button>
             </div>

@@ -3,6 +3,7 @@ import Popup from 'reactjs-popup';
 import { useCookies } from 'react-cookie';
 import WaitForRequest from './WaitForRequest';
 import DeletePassword from './DeletePassword';
+import EditPassword from './EditPassword';
 
 function PasswordBox({ text }) {
   const [website, setWebsite] = useState('')
@@ -10,6 +11,8 @@ function PasswordBox({ text }) {
   const [showPassword, setShowPassword] = useState(false)
   const [showDelete, setShowDelete] = useState(false)
   const [waitFor, setWaitfor] = useState(false);
+  const [showEdit, setShowEdit] = useState(false)
+
   useEffect(() => {
     const remove = () => {
       const modifiedString = text.website.replace(/(www\.|\.co\.uk|\.com)/g, '');
@@ -21,6 +24,7 @@ function PasswordBox({ text }) {
     remove();
   }, [])
 
+  
   const requestPassword = () => {
     setWaitfor(true)
     console.log('Test')
@@ -84,7 +88,7 @@ function PasswordBox({ text }) {
                   <button onClick={() => requestPassword()} className='requestButtons'>
                     Request Password
                   </button>
-                  <button className='requestButtons'>
+                  <button className='requestButtons' onClick={() => setShowEdit(true)}>
                     Edit Password
                   </button>
                   <button className='requestButtons' onClick={() => setShowDelete(true)}>
@@ -97,6 +101,7 @@ function PasswordBox({ text }) {
         </Popup>
         <WaitForRequest setShowPassword={setShowPassword} showPassword={showPassword} setWaitfor={setWaitfor} waitFor={waitFor} uid={cookies.uid} text={text.id}></WaitForRequest>
         <DeletePassword showDelete={showDelete} text={text.id} setShowDelete={setShowDelete}/>
+        <EditPassword showEdit={showEdit} setShowEdit={setShowEdit} text={text} websitename={website}></EditPassword>
       </section>
 
     </div>

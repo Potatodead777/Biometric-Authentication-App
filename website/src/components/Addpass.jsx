@@ -5,7 +5,6 @@ import { useCookies } from 'react-cookie';
 
 function Addpass() {
   const [addWeb, setaddWeb] = useState();
-  const [addWebName, setaddWebName] = useState();
   const [addPass, setaddPass] = useState();
   const [info, setInfo] = useState('');
   const [addVis, setAddVis] = useState('visibility');
@@ -81,18 +80,6 @@ function Addpass() {
                   onChange={(e) => setaddWeb(e.target.value)}
                   required
                 />
-
-
-                <br />
-                <label htmlFor="addWebsiteName">Website Name (Optional)</label>
-                <br />
-                <input
-                  placeholder='Website Name '
-                  id='addWebsiteName'
-                  value={addWebName}
-                  onChange={(e) => setaddWebName(e.target.value)}
-                />
-
 
                 <br />
                 <label htmlFor="addPassword">Password</label>

@@ -281,4 +281,18 @@ export const deletePasswords = (req, res) => {
     }
   });
 }
+
+export const updatePassword = (req, res) => {
+  logger.info(`${req.method} ${req.originalUrl}, Updating Password`)
+  database.query(QUERY.UPDATE_PASSWORD, Object.values(req.body), (error, results) => {
+      if (error) {
+          res.status(httpStatus.NOT_FOUND.code)
+              .send(new Response(httpStatus.NOT_FOUND.code, httpStatus.NOT_FOUND.status, `Password by id ${req.params.id} was not found`))
+      } else {
+        res.status(httpStatus.CREATED.code).send(
+          new Response(httpStatus.CREATED.code, httpStatus.OK.status, 'Updating Passwords')
+        );
+      }
+  });
+}
 export default httpStatus;

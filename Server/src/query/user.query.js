@@ -16,7 +16,8 @@ const QUERY = {
     CHANGE_REQUEST_ACCPETED: 'UPDATE requests SET accepted = ? WHERE id = ?',
     DELETE_REQUEST: 'DELETE FROM requests WHERE id = ?;',
     DELETE_OLD_REQUESTS: 'DELETE FROM requests WHERE created_at < (NOW() - INTERVAL 3 MINUTE)',
-    DELETE_PASSWORD_WHERE_ID: 'DELETE FROM passwords WHERE id = ?'
+    DELETE_PASSWORD_WHERE_ID: 'DELETE FROM passwords WHERE id = ?',
+    UPDATE_PASSWORD: 'UPDATE passwords SET website = ?, password = ?, extraInfo = ? WHERE id = ?'
 };
 
 export default QUERY;

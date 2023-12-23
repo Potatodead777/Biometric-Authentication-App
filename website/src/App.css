@@ -379,3 +379,36 @@ label{
     display: flex;
     gap: 10px;
 }
+
+.Delete-Website{
+    justify-content: center;
+    display: flex;
+    font-size: 3rem;
+}
+
+
+.delete-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    width: 50vw;
+    height: 280px;
+}
+
+.edit-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    width: 50vw;
+    height: 500px;
+}
