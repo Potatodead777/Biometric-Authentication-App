@@ -1,13 +1,16 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.os.Bundle;
 import com.android.volley.Request;
@@ -34,11 +37,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         SharedPreferences sharedPreferences2 = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String storedUid = sharedPreferences2.getString("UID", "");
         ArrayList<String> websiteNamesList = new ArrayList<>();
-        Button button3 = findViewById(R.id.button3);
+        ImageView button3 = findViewById(R.id.backButton2);
+        Button button2 = findViewById(R.id.button2);
         JSONObject requestBody2 = new JSONObject();
         try {
             requestBody2.put("uid", storedUid);
@@ -48,27 +54,33 @@ public class MainActivity extends AppCompatActivity {
 
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                finish();
-                overridePendingTransition(0, 0);
-                startActivity(getIntent());
-                overridePendingTransition(0, 0);
+                Intent intent = getIntent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+
+
             }
         });
-        TextView data = findViewById(R.id.data);
-        url = "http://13.48.147.244/api/requests/uid";
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        url = "http://13.51.160.133/api/requests/uid";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, requestBody2, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    String website = response.toString();
                     JSONArray websitesArray = response.getJSONArray("message");
 
                     websiteNamesArray = new String[websitesArray.length()];
                     for (int i = 0; i < websitesArray.length(); i++) {
                         websiteNamesArray[i] = websitesArray.getString(i);
                     }
-
-                    data.setText(websitesArray.toString());
 
                     for (int i = 0; i < websitesArray.length(); i++){
                         JSONObject jsonObject = websitesArray.getJSONObject(i);
@@ -83,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                    // MAKE SCRIPT THAT makes all websites into a list then use taht in recycler view
                 }catch (Exception e){
                     data.setText("failed");
                 }

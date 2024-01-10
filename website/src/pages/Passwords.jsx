@@ -16,7 +16,7 @@ function Passwords() {
           uid: cookies.uid
         };
 
-        fetch('http://13.48.147.244/api/password', {
+        fetch('http://13.51.160.133/api/password', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ function Passwords() {
       password: addPass
     }
 
-    fetch('http://13.48.147.244/api/password', {
+    fetch('http://13.51.160.133/api/password', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

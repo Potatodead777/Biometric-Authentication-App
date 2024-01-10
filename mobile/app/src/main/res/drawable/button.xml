@@ -1,0 +1,11 @@
+<!-- button_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- Set the background color you want -->
+    <solid android:color="@android:color/white" />
+    <!-- Set the stroke to 0dp to remove the border -->
+    <stroke
+        android:width="0dp"
+        android:color="@android:color/black" />
+
+</shape>

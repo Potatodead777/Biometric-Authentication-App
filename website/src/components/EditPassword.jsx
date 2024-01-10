@@ -32,6 +32,29 @@ function EditPassword({showEdit, text, websitename}) {
         seteditPass(password)
       }
     
+      const editPasswordCall = () => {
+        const data = {
+          website: editWeb,
+          password: editPass,
+          extraInfo: info,
+          id: text.id
+        }
+
+        fetch('http://13.51.160.133/api/password', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+          .then(response => response.json())
+          .then(responseData => {
+            console.log(responseData)
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          }); 
+      }
 
       //create fetch patch for api change password
 
@@ -43,7 +66,7 @@ function EditPassword({showEdit, text, websitename}) {
               Edit {editWebName}
             </section>
             <section className='add-password-form'>
-              <form >
+              <form onSubmit={() => editPasswordCall()}>
               <br />
 
                 <label htmlFor="addWebsite">Website URL</label>

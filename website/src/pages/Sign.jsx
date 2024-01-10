@@ -9,7 +9,7 @@ function Sign() {
     const navigate = useNavigate();
     useEffect(() => {
       const isSignedIn = () => {
-        if(cookies.uid != null){
+        if(cookies.uid != null && cookies.uid != 'undefined'){
           console.log("cookie exists: " + cookies.uid)
           navigate('/passwords');
         }
@@ -26,7 +26,7 @@ function Sign() {
           password: 'secretPassword',
         };
       
-        fetch('http://13.48.147.244/user', {
+        fetch('http://13.51.160.133/user', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ function Sign() {
       
     
       const getData = () => {
-        fetch('http://13.48.147.244/user')
+        fetch('http://13.51.160.133/user')
         .then(response => response.json())
         .then(data => {
           // Handle the response data
@@ -64,7 +64,7 @@ function Sign() {
             password: InPass,
         };
   
-        fetch('http://13.48.147.244/api/signin', {
+        fetch('http://13.51.160.133/api/signin', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -76,6 +76,7 @@ function Sign() {
             // Handle the response data
             console.log(responseData);
             setCookie('uid', responseData.data);
+            navigate('/');
           })
           .catch(error => {
             console.error('Error:', error);

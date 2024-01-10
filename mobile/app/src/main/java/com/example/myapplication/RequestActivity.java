@@ -1,13 +1,10 @@
 package com.example.myapplication;
 
-import static android.hardware.biometrics.BiometricManager.Authenticators.BIOMETRIC_STRONG;
-import static android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,13 +17,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.Executor;
 
 public class RequestActivity extends AppCompatActivity {
@@ -39,10 +37,12 @@ public class RequestActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_request);
-        TextView temp = findViewById(R.id.textView3);
         TextView temp2 = findViewById(R.id.websiteNameRequest);
+        TextView temp3 = findViewById(R.id.textView8);
+
         Button button1 = findViewById(R.id.button1);
         Button button2 = findViewById(R.id.button2);
+        ImageView backButton = findViewById(R.id.backButton2);
         executor = ContextCompat.getMainExecutor(this);
         biometricPrompt=new BiometricPrompt(RequestActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
             @Override
@@ -71,22 +71,26 @@ public class RequestActivity extends AppCompatActivity {
         if (extras != null) {
             try {
                 JSONObject jsonObject = new JSONObject(extras.getString("data"));
-
-                temp.setText(extras.getString("data"));
                 temp2.setText(jsonObject.getString("websiteName"));
+                temp3.setText(jsonObject.getString("created_at").substring(11, 19));
 
 
             } catch (JSONException e) {
                 throw new RuntimeException(e);
             }
-
-
             //The key argument here must match that used in the other activity
         }else {
             String value = "nothing";
             temp.setText(value);
-
         }
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(RequestActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -102,6 +106,9 @@ public class RequestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 temp2.setText("we don't do a little trolling");
                 sendRequest("n");
+                Intent intent = new Intent(RequestActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
 
             }
         });

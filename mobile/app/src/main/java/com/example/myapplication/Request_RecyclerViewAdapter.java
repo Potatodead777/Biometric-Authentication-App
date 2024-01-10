@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import static android.content.Intent.FLAG_ACTIVITY_NO_ANIMATION;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -37,12 +39,11 @@ public class Request_RecyclerViewAdapter extends RecyclerView.Adapter<Request_Re
         holder.requestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.websiteName.setText("Test");
-
-
                 Intent intent = new Intent(context, RequestActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("data", requestModels.get(position).getFullJSON());
                 context.startActivity(intent);
+
             }
         });
     }

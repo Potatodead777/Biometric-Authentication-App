@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         String email2 = email.getText().toString().trim();
         String password2 = password.getText().toString().trim();
 
-        String url = "http://13.48.147.244/api/signin";
+        String url = "http://13.51.160.133/api/signin";
 
         JSONObject requestBody = new JSONObject();
         try {
