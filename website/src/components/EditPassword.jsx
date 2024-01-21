@@ -40,7 +40,7 @@ function EditPassword({showEdit, text, websitename}) {
           id: text.id
         }
 
-        fetch('http://13.51.160.133/api/password', {
+        fetch('http://localhost/api/password', {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
@@ -114,7 +114,7 @@ function EditPassword({showEdit, text, websitename}) {
                 />
                 <br />
                 <button type="submit" className='addPasswordBox'>Confirm</button>
-                <button type="submit" className='addPasswordBox'>No</button>
+                <button type="button" className='addPasswordBox'>Cancel</button>
 
               </form>
             </section>

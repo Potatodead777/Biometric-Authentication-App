@@ -1,4 +1,4 @@
-FROM node:alpine3.11
+FROM node:19-bullseye
 
 WORKDIR /usr/code
 

@@ -35,7 +35,7 @@ function PasswordBox({ text }) {
       accepted: 'u'
     }
 
-    fetch('http://13.51.160.133/api/requests', {
+    fetch('http://localhost/api/requests', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

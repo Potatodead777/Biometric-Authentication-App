@@ -1,6 +1,7 @@
 html,
 body {
     margin: 0px;
+    background-color: #f1f5f9;
 }
 
 * {
@@ -78,7 +79,7 @@ body {
 
 .Password-Main-Section {
     height: auto;
-    width: 80%;
+    width: 100%;
 }
 
 .Password-Main-Add-Section {
@@ -198,7 +199,13 @@ body {
     background-color: #b91c1c;
 }
 
-.sign-in-button {}
+.sign-in-button {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 1.4rem;
+    margin-left: 20px;
+}
 
 .new-password-title {
     justify-content: center;
@@ -329,7 +336,7 @@ label{
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     width: 50vw;
-    height: 350px;
+    padding: 50px 0px 50px 0px;
 }
 
 .loader-request{
@@ -427,7 +434,11 @@ label{
 }
 
 .imagetest{
-    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 600px;
     height: 65%;
 }
 
@@ -450,4 +461,71 @@ label{
     align-items: center;
     justify-content: center;
 
+}
+
+.request-title{
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.sign-in-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 200px;
+}
+
+.test5{
+    height: 80vh;
+}
+
+.test4{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.test7{
+    margin-bottom: 40px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.sign-in-button-2{
+    width: 170px;
+    height: 60px;
+    font-size: 2rem;
+    border-radius: 2rem;
+    border: none;
+    background-color: #dc2626;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+}
+
+.sign-in-button-2:hover{
+    background-color: #b91c1c;
+}
+
+.sign-in-button-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.test6{
+    height: 400px;
+    background-color: #b91c1c;
+    width: 4px;
+    margin: 0px 20px 0px 26px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.sign-in-title{
+    font-size: 2rem;
+    margin-bottom: 20px;
 }

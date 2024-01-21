@@ -49,7 +49,7 @@ const Layout = () => {
         </section>
         <section className="DarkModeProfile">
           <div className="dark-mode-button clickable material-symbols-outlined">
-            dark_mode
+            question_mark
           </div>
           <div onClick={() => signinout('signin')} className="clickable sign-in-button">
             {cookies.uid != null ? ('Sign Out') : ('Sign In')}

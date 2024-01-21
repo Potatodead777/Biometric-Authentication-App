@@ -39,7 +39,7 @@ function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitfor, uid
     }
     console.log(data)
 
-    fetch('http://13.51.160.133/api/check', {
+    fetch('http://localhost/api/check', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitfor, uid
     const data = {
       id: id
     }
-    fetch(`http://13.51.160.133/api/requests/uid`, {
+    fetch(`http://localhost/api/requests/uid`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -99,11 +99,8 @@ function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitfor, uid
     <div>
         <Popup modal open={waitFor} nested>
             <div className='waiting-div'>
-                <span>{test}</span>
+                <span className='request-title'>Please don't leave this page, accept request on mobile</span>
                 <div className='loader-request'></div>
-                <div>
-                  <button onClick={() => checkRequest()}>Ive Accepted</button>
-                </div>
             </div>
         </Popup>
     </div>

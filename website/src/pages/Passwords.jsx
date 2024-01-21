@@ -16,7 +16,7 @@ function Passwords() {
           uid: cookies.uid
         };
 
-        fetch('http://13.51.160.133/api/password', {
+        fetch('http://localhost/api/password', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ function Passwords() {
       password: addPass
     }
 
-    fetch('http://13.51.160.133/api/password', {
+    fetch('http://localhost/api/password', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -70,9 +70,6 @@ function Passwords() {
         <Addpass></Addpass>
       </section>
       <section className='Password-Section'>
-      <section className='Password-Options-Section'>
-        this section will contain options for the passwords
-      </section>
         <section className='Password-Main-Section'>
           <section className='Password-Main-Inner'>
             {passwords.length > 0 ? (
