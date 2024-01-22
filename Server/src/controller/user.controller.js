@@ -163,24 +163,7 @@ export const addPassword = (req, res) => {
       } else {
         // On successful insertion, delete old requests
         logger.info('Request added successfully');
-        database.query(QUERY.DELETE_OLD_REQUESTS, Object.values(req.body), (deleteError, deleteResults) => {
-          if (deleteError) {
-            logger.error(deleteError.message);
-            res.status(httpStatus.INTERNAL_SERVER_ERROR.code).send(
-              new Response(httpStatus.INTERNAL_SERVER_ERROR.code, httpStatus.INTERNAL_SERVER_ERROR.status, deleteError.message)
-            );
-          } else {
-            logger.info('Old requests deleted successfully');
-            res.status(httpStatus.CREATED.code).send(
-              new Response(httpStatus.CREATED.code, httpStatus.CREATED.status, results)
-            );
-          }
-          //CREATE EVENT delete_old_requests
-          //ON SCHEDULE
-          //EVERY 1 MINUTE
-          //DO
-          // FROM requests WHERE created_at < (NOW() - INTERVAL 3 MINUTE);
-        });
+
       }
     });
   };
