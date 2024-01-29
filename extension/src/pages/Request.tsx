@@ -2,7 +2,13 @@ import React from 'react'
 
 function Request() {
   return (
-    <div>Request</div>
+    <div className='request-container'>
+      <div className='request-div'>
+        <div className='request-button'>
+          Request
+        </div>
+      </div>
+    </div>
   )
 }
 

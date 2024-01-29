@@ -11,8 +11,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="blogs" element={<Signin />} />
-          <Route path="contact" element={<Request />} />
+          <Route path="signin" element={<Signin />} />
+          <Route path="request" element={<Request />} />
         </Route>
       </Routes>
     </BrowserRouter>
