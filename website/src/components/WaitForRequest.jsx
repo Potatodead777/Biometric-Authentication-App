@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Popup from 'reactjs-popup'
 
-function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitfor, uid, te  xt}) {
+function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitfor, uid, text}) {
   const [test, setTest] = useState('test1')
   const [shouldCallFunction, setShouldCallFunction] = useState(false);
 
@@ -39,7 +39,7 @@ function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitfor, uid
     }
     console.log(data)
 
-    fetch('http://13.51.160.133/api/check', {
+    fetch('http://13.51.172.44/api/check', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitfor, uid
     const data = {
       id: id
     }
-    fetch(`http://13.51.160.133/api/requests/uid`, {
+    fetch(`http://13.51.172.44/api/requests/uid`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

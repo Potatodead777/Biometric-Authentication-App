@@ -40,7 +40,7 @@ function EditPassword({showEdit, text, websitename}) {
           id: text.id
         }
 
-        fetch('http://13.51.160.133/api/password', {
+        fetch('http://13.51.172.44/api/password', {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',

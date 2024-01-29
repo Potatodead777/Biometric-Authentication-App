@@ -19,7 +19,7 @@ function Addpass() {
       info: info
     }
 
-    fetch('http://13.51.160.133/api/password', {
+    fetch('http://13.51.172.44/api/password', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -30,6 +30,7 @@ function Addpass() {
       .then(responseData => {
         // Handle the response data
         console.log(responseData);
+        window. location. reload();
       })
       .catch(error => {
         console.error('Error:', error);

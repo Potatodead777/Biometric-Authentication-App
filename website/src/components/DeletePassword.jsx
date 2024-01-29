@@ -8,7 +8,7 @@ function DeletePassword({showDelete, text, setShowDelete}) {
           id: text
         }
 
-        fetch('http://13.51.160.133/api/password', {
+        fetch('http://13.51.172.44/api/password', {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json',

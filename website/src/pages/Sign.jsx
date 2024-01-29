@@ -26,7 +26,7 @@ function Sign() {
       password: 'secretPassword',
     };
 
-    fetch('http://13.51.160.133/user', {
+    fetch('http://13.51.172.44/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ function Sign() {
 
 
   const getData = () => {
-    fetch('http://13.51.160.133/user')
+    fetch('http://13.51.172.44/user')
       .then(response => response.json())
       .then(data => {
         // Handle the response data
@@ -64,7 +64,7 @@ function Sign() {
       password: InPass,
     };
 
-    fetch('http://13.51.160.133/api/signin', {
+    fetch('http://13.51.172.44/api/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
