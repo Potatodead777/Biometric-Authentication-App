@@ -42,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "@types/chrome": "^0.0.259",
     "react-router-dom": "^6.21.3"
   }
 }

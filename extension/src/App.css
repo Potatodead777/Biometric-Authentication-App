@@ -62,3 +62,11 @@ form p{
   padding: 0px;
   font-size: 1.2rem;
 }
+
+.request_button{
+  width: 200px;
+  height: 80px;
+  background-color: red;
+  color: white;
+  border-radius: 0.3rem;
+}
