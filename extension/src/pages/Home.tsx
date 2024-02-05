@@ -47,14 +47,15 @@ function Home() {
 
   const checkURL = () => {
     console.log(webNames)
-    webNames.forEach(element => {
-    console.log(element)
-    if(currentUrl.includes(element)) {
+    webNames.forEach((element, index) => {
+    console.log(element + index)
+    if(currentUrl.includes(element.toLowerCase())) {
+      localStorage.setItem('id', index.toString())
       console.log('true ' + element)
       navigate('/request')
       return;
     }else{
-      console.log('false ' + element + " " + currentUrl)
+      console.log('false ' + element.toLowerCase() + " " + currentUrl)
     }
   })
   }
@@ -75,9 +76,11 @@ function Home() {
         .then(responseData => {
           // Handle the response data
           console.log(responseData);
+          localStorage.setItem('test', JSON.stringify(responseData))
           setData(responseData)
           setWebNames(responseData.data);
           const websiteArray: string[] = responseData.data.map((item: DataItem) => item.website);
+
           setWebNames(websiteArray);
           checkURL()
         })
