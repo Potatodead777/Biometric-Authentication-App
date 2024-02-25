@@ -55,28 +55,28 @@ function PasswordBox({ text }) {
 
   return (
     <div className='PasswordBox clickable'>
-      <section className='Password-Website'>
+      <section className='Password-Website' data-testid="password-website">
         {website}
       </section>
       <section className='Password-Request-Button-Div'>
-        <Popup trigger={<button className='Password-Request-Button clickable'> View </button>} modal nested>
+        <Popup trigger={<button className='Password-Request-Button clickable'> View </button>} open={true} modal nested>
           <div>
             <div className='pop-up-add-password'>
-              <section className='new-password-title'>
+              <section className='new-password-title' data-testid="password-website-2">
                 {website}
               </section>
               <div className='test'>
-                <label>Website URL</label>
-                <div className='display-text'>
+                <label data-testid="password-label">Website URL</label>
+                <div className='display-text' data-testid="password-title">
                   {text.website}
                 </div>
                 <br />
-                <label>Website Password</label>
-                <div className='display-text'>
+                <label data-testid="password-label-2">Website Password</label>
+                <div className='display-text' data-testid="password-hide">
                   {showPassword === false ? ('************') : (text.password)}
                 </div>
                 <label>Extra Information</label>
-                <div className='display-text-area'>
+                <div className='display-text-area' data-testid="password-info">
                 {text.extraInfo === null ? (
                   'No extra information added for this password'
                 ) : (
@@ -84,14 +84,14 @@ function PasswordBox({ text }) {
                 )}
 
                 </div>
-                <div className='password-view-buttons'>
-                  <button onClick={() => requestPassword()} className='requestButtons'>
+                <div className='password-view-buttons' data-testid="password-buttons">
+                  <button onClick={() => requestPassword()} className='requestButtons' data-testid="password-request">
                     Request Password
                   </button>
-                  <button className='requestButtons' onClick={() => setShowEdit(true)}>
+                  <button className='requestButtons' onClick={() => setShowEdit(true)} data-testid="password-edit">
                     Edit Password
                   </button>
-                  <button className='requestButtons' onClick={() => setShowDelete(true)}>
+                  <button className='requestButtons' onClick={() => setShowDelete(true)} data-testid="password-delete">
                     Delete Password
                   </button>
                 </div>

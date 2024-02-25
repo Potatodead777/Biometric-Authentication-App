@@ -89,7 +89,7 @@ function Sign() {
   return (
     <div className='test5'>
       <div className='sign-in-div'>
-        <form onSubmit={(event) => SignInFunction(event)} className='test4'>
+        <form onSubmit={(event) => SignInFunction(event)} className='test4' data-testid="sign-form" datatest>
           <div className='sign-in-title'>
             <u>Sign In</u>
           </div>
@@ -98,31 +98,34 @@ function Sign() {
             id='signInEmail'
             onChange={(e) => setInEmail(e.target.value)}
             className='test7'
+            data-testid="sign-form-email"
           />
           <input
             placeholder='Password'
             id='signInPassword'
             onChange={(e) => setInPass(e.target.value)}
             className='test7'
+            data-testid="sign-form-password"
 
           />
           <div className='sign-in-button-div'>
-            <button type="submit" className='sign-in-button-2 clickable'>Sign In</button>
+            <button type="submit" className='sign-in-button-2 clickable' data-testid="sign-form-button">Sign In</button>
 
           </div>
         </form>
         <section className='test6'>
         </section>
-        <form onSubmit={() => SignUpFunction()} className='test4'>
+        <form onSubmit={() => SignUpFunction()} className='test4' data-testid="sign-form-2">
           <div className='sign-in-title'>
             <u>Sign Up</u>
           </div>
-          <input placeholder='Email' id='signUpEmail' className='test7'>
+          <input placeholder='Email' id='signUpEmail' className='test7' data-testid="sign-form-up-email"
+>
           </input>
-          <input placeholder='Password' id='signUpPassword' className='test7'>
+          <input placeholder='Password' id='signUpPassword' className='test7' data-testid="sign-form-up-password">
           </input>
           <div className='sign-in-button-div'>
-            <button type="submit" className='sign-in-button-2 clickable'>Sign Up</button>
+            <button type="submit" className='sign-in-button-2 clickable' data-testid="sign-form-2-button">Sign Up</button>
 
           </div>
         </form>
