@@ -1,6 +1,7 @@
 CREATE DATABASE IF NOT EXISTS userdb;
 
 USE userdb;
+SET GLOBAL event_scheduler = ON;
 
 DROP TABLE IF EXISTS users;
 
@@ -52,5 +53,15 @@ BEGIN
     INSERT INTO users(email, password, uid) VALUES (email, password, UUID());
     SET @USER_ID = LAST_INSERT_ID();
     SELECT * FROM users WHERE id = @USER_ID;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE EVENT delete_old_rows_event
+ON SCHEDULE EVERY 1 MINUTE
+DO
+BEGIN
+    DELETE FROM requests
+    WHERE created_at < NOW() - INTERVAL 3 MINUTE;
 END //
 DELIMITER ;
