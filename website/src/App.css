@@ -529,3 +529,45 @@ label{
     font-size: 2rem;
     margin-bottom: 20px;
 }
+
+.profile-div{
+    height: calc(100vh - 80px - 95px - 200px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 100px 0px 100px 0px;
+}
+
+.about-div{
+    height: calc(100vh - 80px - 95px)
+}
+
+.profile-title{
+    font-size: 3rem;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.profile-buttons{
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+gap: 40px;
+
+}
+
+.profile-buttons button{
+    width: 250px;
+    height: 80px;
+    font-size: 2rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    background-color: #dc2626;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

@@ -34,7 +34,7 @@ function Request() {
       .then((responseData) => {
         // Handle the response data
         console.log("test ");
-
+        console.log(responseData)
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -53,7 +53,6 @@ function Request() {
             <div>
               <div>Do you want to request</div>
               <div className="request_button" onClick={() => RequestData()}>Request</div>
-              Request
             </div>
           ) : (
             <div className='loader'></div>
