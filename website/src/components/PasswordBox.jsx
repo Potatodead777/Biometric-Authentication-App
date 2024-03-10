@@ -59,7 +59,7 @@ function PasswordBox({ text }) {
         {website}
       </section>
       <section className='Password-Request-Button-Div'>
-        <Popup trigger={<button className='Password-Request-Button clickable'> View </button>} open={true} modal nested>
+        <Popup trigger={<button className='Password-Request-Button clickable'> View </button>} modal nested>
           <div>
             <div className='pop-up-add-password'>
               <section className='new-password-title' data-testid="password-website-2">
