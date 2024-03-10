@@ -278,4 +278,18 @@ export const updatePassword = (req, res) => {
       }
   });
 }
+
+export const GetOldRequest = (req, res) => {
+  logger.info(`${req.method} ${req.originalUrl}, Updating Password`)
+  database.query(QUERY.GET_HISTORY, Object.values(req.body), (error, results) => {
+      if (error) {
+          res.status(httpStatus.NOT_FOUND.code)
+              .send(new Response(httpStatus.NOT_FOUND.code, httpStatus.NOT_FOUND.status, `Password by id ${req.params.id} was not found`))
+      } else {
+        res.status(httpStatus.CREATED.code).send(
+          new Response(httpStatus.CREATED.code, httpStatus.OK.status, results)
+        );
+      }
+  });
+}
 export default httpStatus;

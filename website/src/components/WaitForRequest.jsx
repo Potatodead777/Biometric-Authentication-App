@@ -11,7 +11,7 @@ function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitfor, uid
     if (waitFor === true) {
       intervalId = setInterval(() => {
         // Call your function here
-        yourFunction();
+        constantCall();
       }, 2000); // Interval of 2 seconds (2000 milliseconds)
     }
 
@@ -22,7 +22,7 @@ function WaitForRequest({showPassword, setShowPassword, waitFor, setWaitfor, uid
   }, [waitFor]);
 
   // Your function to be called every 2 seconds if shouldCallFunction is true
-  const yourFunction = () => {
+  const constantCall = () => {
     // Your logic here
     checkRequest();
     };

@@ -17,7 +17,8 @@ const QUERY = {
     DELETE_REQUEST: 'DELETE FROM requests WHERE id = ?;',
     DELETE_OLD_REQUESTS: 'DELETE FROM requests WHERE created_at < (NOW() - INTERVAL 3 MINUTE)',
     DELETE_PASSWORD_WHERE_ID: 'DELETE FROM passwords WHERE id = ?',
-    UPDATE_PASSWORD: 'UPDATE passwords SET website = ?, password = ?, extraInfo = ? WHERE id = ?'
+    UPDATE_PASSWORD: 'UPDATE passwords SET website = ?, password = ?, extraInfo = ? WHERE id = ?',
+    GET_HISTORY: 'SELECT * FROM request_history WHERE uid = ?'
 };
 
 export default QUERY;
