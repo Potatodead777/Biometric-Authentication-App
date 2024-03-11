@@ -5,8 +5,6 @@ import PasswordBox from '../components/PasswordBox';
 function Passwords() {
   const [cookies] = useCookies(['uid']);
   const [passwords, setPasswords] = useState([]);
-  const [addWeb, setaddWeb] = useState([]);
-  const [addPass, setaddPass] = useState([]);
 
   useEffect(() => {
     // Check if 'uid' is available in cookies
@@ -37,31 +35,6 @@ function Passwords() {
       grabPass();
     }
   }, [cookies.uid]);
-
-  const addPasswordFunction = () => {
-    const data = {
-      uid: cookies.uid,
-      website: addWeb,
-      password: addPass
-    }
-
-    fetch('http://13.51.172.44/api/password', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(response => response.json())
-      .then(responseData => {
-        // Handle the response data
-        console.log(responseData);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-
-  }
 
 
   return (

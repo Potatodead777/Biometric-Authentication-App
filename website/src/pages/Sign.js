@@ -18,44 +18,6 @@ function Sign() {
     isSignedIn()
   }, [])
 
-
-
-  const postData = () => {
-    const data = {
-      email: 'example@example.com',
-      password: 'secretPassword',
-    };
-
-    fetch('http://13.51.172.44/user', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(response => response.json())
-      .then(responseData => {
-        // Handle the response data
-        console.log(responseData);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  };
-
-
-  const getData = () => {
-    fetch('http://13.51.172.44/user')
-      .then(response => response.json())
-      .then(data => {
-        // Handle the response data
-        console.log(data);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }
-
   const SignInFunction = (event) => {
     event.preventDefault();
     console.log("rea")

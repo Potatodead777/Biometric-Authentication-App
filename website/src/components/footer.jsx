@@ -4,7 +4,7 @@ function footer() {
   return (
     <div className='footer'>
       <span>
-        © 2023
+        © 2024
       </span>
       <span>
         BioPass. All rights reserved.
