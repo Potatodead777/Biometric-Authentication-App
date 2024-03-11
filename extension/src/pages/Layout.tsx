@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <>
       <nav>
-        <img src={Logo} alt="Logo" />
+        <img src={Logo} alt="Logo" className="clickable"/>
       </nav>
       <div className="App">
         <Outlet />

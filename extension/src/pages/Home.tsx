@@ -91,11 +91,8 @@ function Home() {
 
 
   return (
-    <div className='waiting'>Waiting for website signin page
-  
-    <div>{test}</div>
-    <div>{webNames}</div>
-    <div>{currentUrl}</div>
+    <div className='waiting-div'>
+      <div className='waiting'>Waiting for website signin page</div>
     </div>
   )
 }

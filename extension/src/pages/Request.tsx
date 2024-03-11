@@ -44,10 +44,24 @@ function Request() {
       setWaiting(true)
 
   };
- 
-  useEffect(() => {     
+
+  useEffect(() => {
+    let intervalId: string | number | NodeJS.Timer | undefined;
+
+    if (waiting === true) {
+      intervalId = setInterval(() => {
+        constantCall();
+      }, 2000);
+    }
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [waiting]);
+
+  const constantCall = () => {
     checkRequest();
-  }, [waiting])
+    };
 
   const changePage = (accepted: string) =>{
     console.log(accepted)
@@ -57,6 +71,8 @@ function Request() {
     }
   }
 
+
+  
   const checkRequest = () =>{
     const temp = JSON.parse(test);
     const idFromLocalStorage = parseInt(localStorage.getItem("id") || "0");
@@ -92,16 +108,23 @@ function Request() {
         <div className="request-button">
           {data === "" ? (
             <div>
-              <div>Do you want to request</div>
-              <div className="request_button" onClick={() => RequestData()}>Request</div>
+              <div>
+                <div>Do you want to request</div>
+              </div>
+              <br />
+              <div className="request-div">
+                <div className="request_button clickable" onClick={() => RequestData()}>Request</div>
+              </div>
             </div>
           ) : (
             <div>
               <div>
                 Accept request on mobile device
               </div>
-              <div className='loader'></div>
-              <button onClick={() => checkRequest() }></button>
+              <br />
+              <div className="loader-div">
+                <div className='loader'></div>
+              </div>
             </div>
           )}
         </div>
