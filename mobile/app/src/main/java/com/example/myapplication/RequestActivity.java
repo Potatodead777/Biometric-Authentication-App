@@ -71,7 +71,7 @@ public class RequestActivity extends AppCompatActivity {
         if (extras != null) {
             try {
                 JSONObject jsonObject = new JSONObject(extras.getString("data"));
-                temp2.setText(jsonObject.getString("websiteName"));
+                temp2.setText(jsonObject.getString("requested_from"));
                 temp3.setText(jsonObject.getString("created_at").substring(11, 19));
 
 
@@ -104,7 +104,6 @@ public class RequestActivity extends AppCompatActivity {
         });
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                temp2.setText("we don't do a little trolling");
                 sendRequest("n");
                 Intent intent = new Intent(RequestActivity.this, MainActivity.class);
                 startActivity(intent);
