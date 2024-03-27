@@ -39,7 +39,7 @@ public class RequestActivity extends AppCompatActivity {
         setContentView(R.layout.view_request);
         TextView temp2 = findViewById(R.id.websiteNameRequest);
         TextView temp3 = findViewById(R.id.textView8);
-
+        TextView temp4 = findViewById(R.id.textView6);
         Button button1 = findViewById(R.id.button1);
         Button button2 = findViewById(R.id.button2);
         ImageView backButton = findViewById(R.id.backButton2);
@@ -56,7 +56,9 @@ public class RequestActivity extends AppCompatActivity {
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
                 sendRequest("y");
-
+                Intent intent = new Intent(RequestActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
 
             @Override
@@ -71,9 +73,9 @@ public class RequestActivity extends AppCompatActivity {
         if (extras != null) {
             try {
                 JSONObject jsonObject = new JSONObject(extras.getString("data"));
-                temp2.setText(jsonObject.getString("requested_from"));
+                temp2.setText(jsonObject.getString("websiteName"));
                 temp3.setText(jsonObject.getString("created_at").substring(11, 19));
-
+                temp4.setText(jsonObject.getString("requested_from"));
 
             } catch (JSONException e) {
                 throw new RuntimeException(e);

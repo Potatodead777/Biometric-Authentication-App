@@ -32,7 +32,7 @@ function PasswordBox({ text }) {
       uid: cookies.uid,
       passwordID: text.id,
       websiteName: text.website,
-      requested_from: 'Webst',
+      requested_from: 'Website',
       accepted: 'u'
     }
 

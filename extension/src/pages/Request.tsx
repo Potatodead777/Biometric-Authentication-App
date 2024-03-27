@@ -22,6 +22,7 @@ function Request() {
       uid: cookies.uid,
       passwordID: temp.data[idFromLocalStorage].id,
       websiteName: temp.data[idFromLocalStorage].website,
+      requested_from: "Extension",
       accepted: "u",
     };
     fetch("http://13.51.172.44/api/requests", {
