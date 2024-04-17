@@ -11,3 +11,5 @@ The mobile application, stores all requets made on that account for up to three 
 The extension works similar to the website, the user can request a password if the website the user is currently on is stored in the server.
 
 The main goal of this project was to complete a project lifecycle of a full-stack development project while focusing on security by design.
+
+Installation instructions can be found in the appendix of the report.
