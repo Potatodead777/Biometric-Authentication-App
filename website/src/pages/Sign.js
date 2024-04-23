@@ -26,7 +26,7 @@ function Sign() {
       password: InPass,
     };
 
-    fetch('http://13.51.172.44/api/signin', {
+    fetch('http://16.170.240.58/api/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ function Sign() {
             onChange={(e) => setInPass(e.target.value)}
             className='test7'
             data-testid="sign-form-password"
-
+            type='password'
           />
           <div className='sign-in-button-div'>
             <button type="submit" className='sign-in-button-2 clickable' data-testid="sign-form-button">Sign In</button>
@@ -84,7 +84,7 @@ function Sign() {
           <input placeholder='Email' id='signUpEmail' className='test7' data-testid="sign-form-up-email"
 >
           </input>
-          <input placeholder='Password' id='signUpPassword' className='test7' data-testid="sign-form-up-password">
+          <input placeholder='Password' type='password' id='signUpPassword' className='test7' data-testid="sign-form-up-password">
           </input>
           <div className='sign-in-button-div'>
             <button type="submit" className='sign-in-button-2 clickable' data-testid="sign-form-2-button">Sign Up</button>

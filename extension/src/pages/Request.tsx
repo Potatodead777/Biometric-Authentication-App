@@ -25,7 +25,7 @@ function Request() {
       requested_from: "Extension",
       accepted: "u",
     };
-    fetch("http://13.51.172.44/api/requests", {
+    fetch("http://16.170.240.58/api/requests", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -84,7 +84,7 @@ function Request() {
     }
     console.log(data)
 
-    fetch('http://13.51.172.44/api/check', {
+    fetch('http://16.170.240.58/api/check', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

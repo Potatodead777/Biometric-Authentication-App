@@ -33,7 +33,7 @@ function WaitForRequest({setShowPassword, waitFor, setWaitfor, uid, text}) {
     }
     console.log(data)
 
-    fetch('http://13.51.172.44/api/check', {
+    fetch('http://16.170.240.58/api/check', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ function WaitForRequest({setShowPassword, waitFor, setWaitfor, uid, text}) {
     const data = {
       id: id
     }
-    fetch(`http://13.51.172.44/api/requests/uid`, {
+    fetch(`http://16.170.240.58/api/requests/uid`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

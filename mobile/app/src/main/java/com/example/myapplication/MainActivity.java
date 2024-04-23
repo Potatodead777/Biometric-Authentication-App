@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        url = "http://13.51.172.44/api/requests/uid";
+        url = "http://16.170.240.58/api/requests/uid";
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, requestBody2, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

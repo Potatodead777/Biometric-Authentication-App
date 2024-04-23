@@ -65,7 +65,7 @@ function Home() {
         uid: cookies.uid
       };
 
-      fetch('http://13.51.172.44/api/password', {
+      fetch('http://16.170.240.58/api/password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
