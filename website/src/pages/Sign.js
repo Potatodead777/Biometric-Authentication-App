@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router';
 
 function Sign() {
   const [InEmail, setInEmail] = useState('');
+  const [outEmail, setOutEmail] = useState('')
+  const [OutPass, setOutPass] = useState('');
+
   const [InPass, setInPass] = useState('');
   const [cookies, setCookie] = useCookies(['uuid']);
   const navigate = useNavigate();
@@ -46,8 +49,32 @@ function Sign() {
   }
 
   const SignUpFunction = () => {
+    const data = {
+      email: outEmail,
+      password: OutPass,
+    };
 
+    fetch('http://16.170.240.58/api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then(responseData => {
+        // Handle the response data
+        console.log(responseData);
+        //setCookie('uid', responseData.data);
+        //navigate('/');
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    
   }
+
+  
   return (
     <div className='test5'>
       <div className='sign-in-div'>
@@ -61,6 +88,7 @@ function Sign() {
             onChange={(e) => setInEmail(e.target.value)}
             className='test7'
             data-testid="sign-form-email"
+            type='email'
           />
           <input
             placeholder='Password'
@@ -81,10 +109,15 @@ function Sign() {
           <div className='sign-in-title'>
             <u>Sign Up</u>
           </div>
-          <input placeholder='Email' id='signUpEmail' className='test7' data-testid="sign-form-up-email"
+          <input 
+          placeholder='Email' 
+          id='signUpEmail' 
+          className='test7' 
+          data-testid="sign-form-up-email"
+          onChange={(e) => setOutEmail(e.target.value)}         
 >
           </input>
-          <input placeholder='Password' type='password' id='signUpPassword' className='test7' data-testid="sign-form-up-password">
+          <input placeholder='Password' type='password' id='signUpPassword' className='test7' data-testid="sign-form-up-password" onChange={(e) => setOutPass(e.target.value)}>
           </input>
           <div className='sign-in-button-div'>
             <button type="submit" className='sign-in-button-2 clickable' data-testid="sign-form-2-button">Sign Up</button>
