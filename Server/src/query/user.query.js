@@ -8,7 +8,7 @@ const QUERY = {
     CREATE_USER_PROCEDURE: 'CALL create_and_return(?, ?)',
     FIND_ID_WHERE_EMAIL: 'SELECT * FROM users WHERE email = ?',
     SELECT_PASS_WHERE_UID: 'SELECT * FROM passwords WHERE uid = ?',
-    ADD_PASS_WHERE_UID: 'INSERT INTO passwords(uid, website, password, extraInfo) VALUES (?,?,?,?)',
+    ADD_PASS_WHERE_UID: 'INSERT INTO passwords(uid, website, password, extraInfo) VALUES (?,?, AES_ENCRYPT(?, "test"), ?)',
     ADD_RES_FROM_ID: 'INSERT INTO requests(uid, passwordID, websiteName, requested_from, accepted) VALUES (?,?,?,?,?)',
     SELECT_ALL_FROM_REQUESTS: 'SELECT * FROM requests',
     SELECT_REQUESTS_FROM_UID: 'SELECT * FROM requests WHERE uid = ? AND accepted = "u"',
