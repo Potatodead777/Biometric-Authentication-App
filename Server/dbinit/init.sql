@@ -20,7 +20,7 @@ CREATE TABLE passwords(
     id          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     uid         VARCHAR(255) NOT NULL,
     website     VARCHAR(255) NOT NULL,
-    password    VARCHAR(255) NOT NULL,
+    password    BLOB NOT NULL,
     extraInfo   VARCHAR(512),
     created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
