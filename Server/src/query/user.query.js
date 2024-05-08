@@ -7,7 +7,7 @@ const QUERY = {
     DELETE_USER: 'DELETE FROM users WHERE id = ?;',
     CREATE_USER_PROCEDURE: 'CALL create_and_return(?, ?)',
     FIND_ID_WHERE_EMAIL: 'SELECT * FROM users WHERE email = ?',
-    SELECT_PASS_WHERE_UID: 'SELECT id, uid, website, AES_DECRYPT(password, "tetstat" USING utf8) AS decrypted_password, extraInfo, created_at FROM passwords WHERE uid = ?',
+    SELECT_PASS_WHERE_UID: 'SELECT id, uid, website, AES_DECRYPT(password, "password" USING utf8) AS decrypted_password, extraInfo, created_at FROM passwords WHERE uid = ?',
     ADD_PASS_WHERE_UID: 'INSERT INTO passwords(uid, website, password, extraInfo) VALUES (?,?, AES_ENCRYPT(?, "password"), ?)',
     ADD_RES_FROM_ID: 'INSERT INTO requests(uid, passwordID, websiteName, requested_from, accepted) VALUES (?,?,?,?,?)',
     SELECT_ALL_FROM_REQUESTS: 'SELECT * FROM requests',
